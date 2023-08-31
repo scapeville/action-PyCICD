@@ -60,8 +60,8 @@ class Test__parser(unittest.TestCase):
         expected = ('call', ['t', '0.1.0b', 'foo'])
         self.assertEqual(result, expected)
 
-        result = parser('foo #52 bar   #r1.0.0 ')
-        expected = ('call', ['t', '0.1.0b', 'foo'])
+        result = parser('foo #52 bar   #t1.0.0 ')
+        expected = ('call', ['t', '1.0.0', 'foo #52 bar'])
         self.assertEqual(result, expected)
 
 
