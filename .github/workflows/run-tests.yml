@@ -1,0 +1,20 @@
+name: Run tests
+on:
+  push:
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      # - run: pip install -r requirements.txt
+      - run: python -m unittest -v
+
+
+
+## Note: The workflow uses the Python version provided by the GitHub Actions
+##       runner (not manually set with actions/setup-python) to improve action speed.
+##       However, in case things go wrong in the future, we can manually set the
+##       Python version using the same version as these tests.
