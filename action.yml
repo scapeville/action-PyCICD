@@ -13,4 +13,5 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - uses: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
+    - run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
+      shell: bash
