@@ -12,5 +12,4 @@ inputs:
 
 runs:
   using: 'composite'
-  steps:
-    - uses: $GITHUB_ACTION_PATH/.github/workflows/core.yml
+  uses: $GITHUB_ACTION_PATH/.github/workflows/core.yml
