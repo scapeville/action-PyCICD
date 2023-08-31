@@ -13,4 +13,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - run: ls
+      shell: bash
+    - uses: actions/checkout@v3
+    - run: ls
+      shell: bash
     - uses: ./.github/workflows/core.yml
