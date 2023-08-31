@@ -12,6 +12,5 @@ inputs:
 
 runs:
   using: 'composite'
-  steps:      
-    - shell: bash
-      run: echo "123"
+  steps:
+    - uses: ./.github/workflows/core.yml
