@@ -15,3 +15,5 @@ runs:
   steps:
     - run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
       shell: bash
+      env:
+        COMMIT_MSG: ${{ github.event.head_commit.message }}
