@@ -6,7 +6,7 @@ branding:
   color: orange
 
 inputs:
-  foo:
+  BRANCH:
     description: 
     required: false
 
