@@ -1,0 +1,10 @@
+name: test
+
+on:
+  workflow_call:
+
+jobs:
+  run123:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "abc"

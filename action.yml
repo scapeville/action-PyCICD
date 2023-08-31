@@ -1,0 +1,17 @@
+name: PyCICD
+description: foo
+author: Nicholas Valentinus
+branding:
+  icon: tool
+  color: orange
+
+inputs:
+  foo:
+    description: 
+    required: true
+
+runs:
+  using: 'composite'
+  steps:      
+    - shell: bash
+      run: echo "123"
