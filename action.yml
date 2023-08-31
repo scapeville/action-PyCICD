@@ -20,7 +20,7 @@ runs:
         commit_msg: ${{ github.event.head_commit.message }}
 
     ## Gating: 'call' procedures
-    - uses: scapeville/action-PyPICD/engine/call
+    - uses: scapeville/action-PyPICD/engine/call@main
       with:
         type: ${{ steps.check.outputs.type }}
         ver: ${{ steps.check.outputs.ver }}
@@ -28,13 +28,13 @@ runs:
       if: ${{ steps.check.outputs.gate == 'call' }}
 
     ## Gating: 'auto' procedures
-    - uses: scapeville/action-PyPICD/engine/auto
+    - uses: scapeville/action-PyPICD/engine/auto@main
       with:
         type: ${{ steps.check.outputs.type }}
       if: ${{ steps.check.outputs.gate == 'auto' }}
 
     ## Publish to PyPI
-    - uses: scapeville/action-PyPICD/engine/publish
+    - uses: scapeville/action-PyPICD/engine/publish@main
       with:
         type: ${{ steps.check.outputs.type }}
       if: ${{ steps.check.outputs.gate == 'auto' }}
