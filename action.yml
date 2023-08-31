@@ -12,12 +12,14 @@ inputs:
 
 runs:
   using: 'composite'
+  # steps:
+  #   - id: check
+  #     run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
+  #     shell: bash
+  #     env:
+  #       COMMIT_MSG: ${{ github.event.head_commit.message }}
+  #   - run: echo ${{ steps.check.outputs.desc }}
+  #     shell: bash
+  #     if: ${{ steps.check.outputs.match }}
   steps:
-    - id: check
-      run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
-      shell: bash
-      env:
-        COMMIT_MSG: ${{ github.event.head_commit.message }}
-    - run: echo ${{ steps.check.outputs.desc }}
-      shell: bash
-      if: ${{ steps.check.outputs.match }}
+    - uses: scapeville/action-PyCICD/.github/workflows/core.yml@main
