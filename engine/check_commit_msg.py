@@ -2,6 +2,9 @@ import os
 import re
 import sys
 
+## to make all subdirs under root dir importable
+sys.path.append(os.environ['GITHUB_ACTION_PATH'])
+
 from engine.constants import UPDATE_VER_MSG
 
 
