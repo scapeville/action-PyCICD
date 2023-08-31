@@ -1,0 +1,13 @@
+name: test
+
+on:
+  workflow_call:
+
+jobs:
+  check:
+    name: Check commit message
+    runs-on: ubuntu-latest
+    steps:
+      - run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
