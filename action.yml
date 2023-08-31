@@ -12,14 +12,33 @@ inputs:
 
 runs:
   using: 'composite'
-  # steps:
-  #   - id: check
-  #     run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
-  #     shell: bash
-  #     env:
-  #       COMMIT_MSG: ${{ github.event.head_commit.message }}
-  #   - run: echo ${{ steps.check.outputs.desc }}
-  #     shell: bash
-  #     if: ${{ steps.check.outputs.match }}
   steps:
-    - uses: scapeville/action-PyCICD/.github/workflows/core.yml@main
+    - id: check
+      run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
+      shell: bash
+      env:
+        commit_msg: ${{ github.event.head_commit.message }}
+
+    ## Gating: 'call' procedures
+    - uses: scapeville/action-PyPICD/engine/call
+      with:
+        type: ${{ steps.check.outputs.type }}
+        ver: ${{ steps.check.outputs.ver }}
+        desc: ${{ steps.check.outputs.desc }}
+      if: ${{ steps.check.outputs.gate == 'call' }}
+
+    ## Gating: 'auto' procedures
+    - uses: scapeville/action-PyPICD/engine/auto
+      with:
+        type: ${{ steps.check.outputs.type }}
+      if: ${{ steps.check.outputs.gate == 'auto' }}
+
+    ## Publish to PyPI
+    - uses: scapeville/action-PyPICD/engine/publish
+      with:
+        type: ${{ steps.check.outputs.type }}
+      if: ${{ steps.check.outputs.gate == 'auto' }}
+
+  ## dev-docs: using 'reusable workflow' within 'action' is confusing
+  # steps:
+  #   - uses: scapeville/action-PyCICD/.github/workflows/core.yml@main

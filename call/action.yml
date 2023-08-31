@@ -1,0 +1,10 @@
+inputs:
+  foo:
+    description: 
+    required: false
+
+runs:
+  using: 'composite'
+  steps:
+    - run: echo "call"
+      shell: bash
