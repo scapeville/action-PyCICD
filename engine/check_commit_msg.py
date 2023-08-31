@@ -62,6 +62,7 @@ def main():
     """
 
     commit_message = os.environ['commit_msg']
+    print(f'DEBUG: commit_message: {repr(commit_message)}')
 
     ## Parse
     res = parser(commit_message)
