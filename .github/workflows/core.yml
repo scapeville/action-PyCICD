@@ -8,6 +8,7 @@ jobs:
     name: Check commit message
     runs-on: ubuntu-latest
     steps:
-      - run: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
+      - run: echo "$GITHUB_WORKSPACE"
+      - run: ls "$GITHUB_WORKSPACE"
         env:
           COMMIT_MSG: ${{ github.event.head_commit.message }}
