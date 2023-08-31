@@ -3,7 +3,10 @@ import re
 import sys
 
 ## to make all subdirs under root dir importable
-sys.path.append(os.environ['GITHUB_ACTION_PATH'])
+try:
+    sys.path.append(os.environ['GITHUB_ACTION_PATH'])
+except KeyError:  # Raised during testing
+    sys.path.append(os.environ['GITHUB_WORKSPACE'])
 
 from engine.constants import UPDATE_VER_MSG
 
