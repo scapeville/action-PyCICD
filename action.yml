@@ -12,4 +12,5 @@ inputs:
 
 runs:
   using: 'composite'
-  uses: $GITHUB_ACTION_PATH/.github/workflows/core.yml
+  steps:
+    - uses: python $GITHUB_ACTION_PATH/engine/check_commit_msg.py
