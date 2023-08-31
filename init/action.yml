@@ -1,0 +1,15 @@
+name: PyCICD init
+description: foo
+author: Nicholas Valentinus
+branding:
+  icon: tool
+  color: orange
+
+inputs:
+  foo:
+    description: 
+    required: false
+
+runs:
+  using: 'node16'
+  main: index.js
